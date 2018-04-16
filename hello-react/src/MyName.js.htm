@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)https://velopert.com/3629 -->
+<html lang="ko-KR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script async="" src="./MyName.js_files/3629"></script><script src="./MyName.js_files/ca-pub-5574866530496701.js"></script><script async="" src="./MyName.js_files/analytics.js"></script><script async="" src="./MyName.js_files/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-5574866530496701",
+    enable_page_level_ads: true
+  });
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://velopert.com/xmlrpc.php">
+<meta name="google-site-verification" content="-C985fals5I0jdrXNOcXwg7g2Pn7XDlMbyu9benEdtg">
+<title>누구든지 하는 리액트 4편: props 와 state | VELOPERT.LOG</title>
+
+<!-- All in One SEO Pack 2.3.11.1 by Michael Torbert of Semper Fi Web Design[617,674] -->
+<meta name="description" content="이 튜토리얼은 10편으로 이뤄진 시리즈입니다. 이전 / 다음 편을 확인하시려면 목차를 확인하세요. 리액트 컴포넌트에서 다루는 데이터는 두개로 나뉩니다. 바로 props 와 state 인데요, 미리 요약하여 설명드리자면 props 는 부모 컴포넌트가 자식 컴포넌트에게 주는 값입니다.">
+
+<meta name="keywords" content="react,react-anyone">
+
+<link rel="canonical" href="https://velopert.com/3629">
+<!-- /all in one seo pack -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="VELOPERT.LOG » 피드" href="https://velopert.com/feed">
+<link rel="alternate" type="application/rss+xml" title="VELOPERT.LOG » 댓글 피드" href="https://velopert.com/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="VELOPERT.LOG » 누구든지 하는 리액트 4편: props 와 state 댓글 피드" href="https://velopert.com/3629/feed">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/velopert.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.10"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="shc_style-css" href="./MyName.js_files/shc_plugin_style.css" type="text/css" media="all">
+<link rel="stylesheet" id="annina-style-css" href="./MyName.js_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="./MyName.js_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="annina-googlefonts-css" href="./MyName.js_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="easy_table_style-css" href="./MyName.js_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="sccss_style-css" href="./MyName.js_files/saved_resource" type="text/css" media="all">
+<script type="text/javascript" src="./MyName.js_files/jquery.js"></script><link rel="preload" href="./MyName.js_files/integrator.js" as="script"><script type="text/javascript" src="./MyName.js_files/integrator.js"></script><link rel="preload" href="./MyName.js_files/integrator(1).js" as="script"><script type="text/javascript" src="./MyName.js_files/integrator(1).js"></script>
+<script type="text/javascript" src="./MyName.js_files/jquery-migrate.min.js"></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://velopert.com/wp-content/themes/annina/js/html5shiv.min.js?ver=3.7.2'></script>
+<![endif]-->
+<link rel="https://api.w.org/" href="https://velopert.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://velopert.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://velopert.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="누구든지 하는 리액트 3편: JSX" href="https://velopert.com/3626">
+<link rel="next" title="누구든지 하는 리액트 5편: LifeCycle API" href="https://velopert.com/3631">
+<meta name="generator" content="WordPress 4.7.10">
+<link rel="shortlink" href="https://velopert.com/?p=3629">
+<link rel="alternate" type="application/json+oembed" href="https://velopert.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fvelopert.com%2F3629">
+<link rel="alternate" type="text/xml+oembed" href="https://velopert.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fvelopert.com%2F3629&amp;format=xml">
+<!-- Adsense Box at http://photoboxone.com/ --><script id="jquerycoreAdsense" href="http://photoboxone.com/js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./MyName.js_files/ie_alert_style.css"><meta property="og:image" content="https://i.imgur.com/xbryzdW.png">
+<meta property="og:image:url" content="https://i.imgur.com/xbryzdW.png">
+<meta property="og:image:secure_url" content="https://i.imgur.com/xbryzdW.png">
+<meta property="twitter:image" content="https://i.imgur.com/xbryzdW.png">
+<meta property="st:image" content="https://i.imgur.com/xbryzdW.png">
+<link rel="image_src" href="./MyName.js_files/xbryzdW.png">
+		<style>
+		.gist table {
+			margin-bottom: 0 !important;
+			table-layout: auto !important;
+		}
+		.gist .line-numbers
+		{
+			width: 4em !important;
+		}
+		.gist .line,
+		.gist .line-number
+		{
+			font-size: 12px !important;
+			height: 18px !important;
+			line-height: 18px !important;
+		}
+		.gist .line
+		{
+			white-space: pre !important;
+			width: auto !important;
+			word-wrap: normal !important;
+		}
+		.gist .line span
+		{
+			word-wrap: normal !important;
+		}
+		</style>
+		
+<style type="text/css">
+		
+		
+		
+		
+</style>
+    		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<script type="text/javascript" async="" src="./MyName.js_files/embed.js"></script><script async="" type="text/javascript" src="./MyName.js_files/count.js"></script><style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; touch-action-delay: none; }
+body /shadow-deep/ [touch-action="none"]{ -ms-touch-action: none; touch-action: none; touch-action-delay: none; }
+[touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; touch-action-delay: none; }
+body /shadow-deep/ [touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; touch-action-delay: none; }
+[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; touch-action-delay: none; }
+body /shadow-deep/ [touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; touch-action-delay: none; }
+[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; touch-action-delay: none; }
+body /shadow-deep/ [touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; touch-action-delay: none; }
+[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; touch-action-delay: none; }
+body /shadow-deep/ [touch-action="pan-x pan-y"],body /shadow-deep/ [touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; touch-action-delay: none; }
+</style><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><link type="text/css" rel="stylesheet" href="chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/content.css"><link rel="preload" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.d0448456a5f42b8df8cea2098aa3acf3.css"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.774abcf1e2c32f6ee53499b090f48ff0.js"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.63f3271bf07ecb32217261221ae0dcde.js"><link rel="preload" as="script" href="https://disqus.com/next/config.js"><script src="./MyName.js_files/count-data.js"></script><script src="./MyName.js_files/alfalfa.4a5fcca1fe50a757044dfd331b660625.js" async="" charset="UTF-8"></script></head>
+<body class="post-template-default single single-post postid-3629 single-format-standard">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74759500-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<div id="facebook-button" onclick="window.open(&#39;https://facebook.com/velopert/&#39;, &#39;mywindow&#39;);"></div>
+<div id="page" class="hfeed site">
+<!-- Start: Search Form -->
+					<div id="search-full">
+						<div class="search-container">
+							<form role="search" method="get" id="search-form" action="https://velopert.com/">
+								<label>
+									<span class="screen-reader-text">Search for:</span>
+									<input type="search" name="s" id="search-field" placeholder="Type here and hit enter...">
+								</label>
+							</form>
+							<span><a id="close-search"><i class="fa fa-close spaceRight"></i>Close</a></span>
+						</div>
+					</div>
+<!-- End: Search Form -->
+
+	<a class="skip-link screen-reader-text" href="https://velopert.com/3629#content">Skip to content</a>
+
+	<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding annCenter">
+							<p class="site-title"><a href="https://velopert.com/" rel="home">VELOPERT.LOG</a></p>
+							<p class="site-description">DEVELOPMENT &amp; LIFE LOG</p>
+					</div>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<button class="menu-toggle">Main Menu<i class="fa fa-align-justify"></i></button>
+			<div class="menu-menu-container"><ul id="menu-menu" class="menu nav-menu"><li id="menu-item-1339" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1339"><a href="https://velopert.com/about">about</a></li>
+<li id="menu-item-7" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-7"><a href="https://velopert.com/category/dev-log">dev.log</a>
+<ul class="sub-menu">
+	<li id="menu-item-2231" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2231"><a href="https://velopert.com/tutorials">tutorials.log</a>
+	<ul class="sub-menu">
+		<li id="menu-item-2234" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2234"><a href="https://velopert.com/node-js-tutorials">node.js</a></li>
+		<li id="menu-item-2232" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2232"><a href="https://velopert.com/reactjs-tutorials">React.js</a></li>
+		<li id="menu-item-2233" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2233"><a href="https://velopert.com/mongodb-tutorial-list">mongodb</a></li>
+	</ul>
+<span class="indicator"></span></li>
+	<li id="menu-item-131" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-131"><a href="https://velopert.com/category/dev-log/tech-log">tech.log</a>
+	<ul class="sub-menu">
+		<li id="menu-item-3552" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3552"><a href="https://velopert.com/category/dev-log/tech-log/serverless">serverless</a></li>
+		<li id="menu-item-132" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-132"><a href="https://velopert.com/category/dev-log/tech-log/nodejs">node.js</a></li>
+		<li id="menu-item-773" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-773"><a href="https://velopert.com/category/dev-log/tech-log/react-js">React.js</a></li>
+		<li id="menu-item-3553" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3553"><a href="https://velopert.com/category/dev-log/tech-log/vue-js">Vue.js</a></li>
+		<li id="menu-item-2319" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2319"><a href="https://velopert.com/category/dev-log/tech-log/graphql">GraphQL</a></li>
+		<li id="menu-item-435" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-435"><a href="https://velopert.com/category/dev-log/tech-log/mongodb">mongodb</a></li>
+		<li id="menu-item-1704" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1704"><a href="https://velopert.com/category/dev-log/tech-log/sass">sass</a></li>
+	</ul>
+<span class="indicator"></span></li>
+	<li id="menu-item-606" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-606"><a href="https://velopert.com/category/idea-log">idea.log</a></li>
+	<li id="menu-item-743" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-743"><a href="https://velopert.com/category/dev-log/tips-log">tips.log</a></li>
+	<li id="menu-item-61" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61"><a href="https://velopert.com/category/dev-log/algorithm-log">algorithm.log</a></li>
+	<li id="menu-item-23" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-23"><a href="https://velopert.com/category/dev-log/link-repository">link.repository</a></li>
+</ul>
+<span class="indicator"></span></li>
+<li id="menu-item-8" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8"><a href="https://velopert.com/category/thoughts-log">thought.log</a></li>
+<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a href="https://velopert.com/category/release-log">release.log</a></li>
+<li id="menu-item-359" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-359"><a href="https://velopert.com/category/review-log">review.log</a></li>
+<li id="menu-item-1282" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1282"><a href="https://velopert.com/category/uncategorized">uncategorized.log</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+
+			<div class="socialLine annCenter">
+										
+										
+										
+										
+										
+										
+										
+								
+									<a href="mailto:public.velopert@gmail.com" title="Email"><i class="fa fa-envelope spaceRightDouble"><span class="screen-reader-text">Email</span></i></a>
+								
+									<div id="open-search" class="top-search"><i class="fa spaceRightDouble fa-search"></i></div>
+							</div>
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-3629" class="post-3629 post type-post status-publish format-standard hentry category-dev-log category-react-js category-tech-log tag-react tag-react-anyone">
+	<div class="content-annina">
+	
+		
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://velopert.com/3629" rel="bookmark">누구든지 하는 리액트 4편: props 와 state</a></h1>
+		<div class="entry-meta smallPart">
+			<span class="posted-on"><i class="fa fa-calendar spaceRight"></i><a href="https://velopert.com/3629" rel="bookmark"><time class="entry-date published" datetime="2018-01-11T00:04:08+00:00">2018년 1월 11일</time><time class="updated" datetime="2018-04-10T19:25:32+00:00">2018년 4월 10일</time></a></span><span class="byline"> <i class="fa fa-user spaceLeftRight"></i><span class="author vcard"><a class="url fn n" href="https://velopert.com/author/velopert">velopert</a></span></span><span class="cat-links"><i class="fa fa-folder-open-o spaceLeftRight"></i><a href="https://velopert.com/category/dev-log" rel="category tag">dev.log</a> / <a href="https://velopert.com/category/dev-log/tech-log/react-js" rel="category tag">React.js</a> / <a href="https://velopert.com/category/dev-log/tech-log" rel="category tag">tech.log</a></span><span class="comments-link"><i class="fa fa-comments-o spaceLeftRight"></i><a href="https://velopert.com/3629#disqus_thread" data-disqus-identifier="3629 https://velopert.com/?p=3629">4 Comments</a></span>		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<ins class="adsbygoogle" style="display: block; height: 60px;" data-ad-client="ca-pub-5574866530496701" data-ad-slot="2155287076" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:502px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:502px;background-color:transparent;"><iframe width="502" height="60" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:502px;height:60px;" src="./MyName.js_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br><blockquote><p>이 튜토리얼은 10편으로 이뤄진 시리즈입니다. 이전 / 다음 편을 확인하시려면&nbsp;<a href="https://velopert.com/3613">목차</a>를 확인하세요.</p></blockquote>
+<p>리액트 컴포넌트에서 다루는 데이터는 두개로 나뉩니다. 바로 props 와 state 인데요, 미리 요약하여 설명드리자면 props 는 부모 컴포넌트가 자식 컴포넌트에게 주는 값입니다. 자식 컴포넌트에서는 props 를 받아오기만하고, 받아온 props 를 직접 수정 할 수 는 없습니다.</p>
+<p>반면에 state 는 컴포넌트 내부에서 선언하며 내부에서 값을 변경 할 수 있습니다.</p>
+<h2>새 컴포넌트 만들기</h2>
+<p>자, 한번 새로운 컴포넌트를 만들어봅시다. src 디렉토리에 MyName 이라는 컴포넌트를 만들어보세요.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyName</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        안녕하세요! 제 이름은 <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{this.props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> 입니다.
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyName;
+</code></pre>
+<p>자신이 받아온 props 값은 <code>this.</code> 키워드를 통하여 조회 할 수 있습니다.<br>
+지금 name 이라는 props 를 보여주도록 설정해주었습니다. 자, 이제 이 컴포넌트를 사용해볼까요?</p>
+<p>App.js 를 다음과 같이 열어보세요.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> MyName <span class="hljs-keyword">from</span> <span class="hljs-string">'./MyName'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">MyName</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"리액트"</span> /&gt;</span>
+    );
+  }
+}
+
+export default App;
+</span></code></pre>
+<p>import 를 통하여 컴포넌트를 불러오고, 렌더링해보겠습니다. 이렇게 컴포넌트를 만들고나면, 일반 태그를 작성하듯이, 작성해주면 됩니다. 그리고 props 값은 <code>name="리액트"</code> 이런식으로 태그의 속성을 설정해주는 것 처럼 해주세요.</p>
+<p>작성 후, 브라우저를 확인해볼까요?</p>
+<p><img src="./MyName.js_files/xbryzdW.png" alt=""></p>
+<h2>defaultProps</h2>
+<p>가끔씩은 실수로 props 를 빠트려먹을때가 있습니다. 혹은, 특정 상황에 props 를 일부러 비워야 할 때도 있구요. 그러한 경우에, props 의 기본값을 설정해줄 수 있는데요, 그것이 바로 defaultProps 입니다.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyName</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">static</span> defaultProps = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'기본이름'</span>
+  }
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        안녕하세요! 제 이름은 <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{this.props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> 입니다.
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyName;
+</code></pre>
+<p>이렇게 하면 만약에 <code>&lt;MyName /&gt;</code> 이런식으로 name 값을 생략해버리면 “기본이름” 이 나타나게 될 것입니다. 참고로, defaultProps 는 다음과 같은 형태로도 설정 할 수 있습니다.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyName</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        안녕하세요! 제 이름은 <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{this.props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> 입니다.
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
+}
+
+MyName.defaultProps = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'기본이름'</span>
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyName;
+</code></pre>
+<p>우리가 곧 알아볼 함수형 컴포넌트에서 defaultProps 를 설정할땐 위 방식으로 하면 됩니다.</p>
+<h2>함수형 컴포넌트</h2>
+<p>이렇게 단순히 props 만 받아와서 보여주기만 하는 컴포넌트의 경우엔 더 간편한 문법으로 작성할 수 있는 방법이 있습니다. 바로, 함수형태로 작성하는 것인데요, 한번 우리가 만들었던 MyName 컴포넌트를 다시 작성해보겠습니다.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-keyword">const</span> MyName = <span class="hljs-function">(<span class="hljs-params">{ name }</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      안녕하세요! 제 이름은 {name} 입니다.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyName;
+</code></pre>
+<p>어떤가요? 훨씬 간단하죠? 함수형 컴포넌트와 클래스형 컴포넌트의 주요 차이점은, 우리가 조만간 배우게 될 state 와 LifeCycle 이 빠져있다는 점입니다. 그래서, 컴포넌트 초기 마운트가 아주 미세하게 빠르고, 메모리 자원을 덜 사용합니다. 미세한 차이이니, 컴포넌트를 무수히 많이 렌더링 하게 되는게 아니라면 성능적으로 큰 차이는 없습니다.</p>
+<h2>state</h2>
+<p>자, 동적인 데이터를 다룰 땐 어떻게 할까요? 바로 state 를 사용합니다. 이번에 또 새로운 컴포넌트를 만들어볼게요. Counter 라는 파일을 생성해서 다음과 같이 입력해보세요.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  state = {
+    <span class="hljs-attr">number</span>: <span class="hljs-number">0</span>
+  }
+
+  handleIncrease = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">this</span>.setState({
+      <span class="hljs-attr">number</span>: <span class="hljs-keyword">this</span>.state.number + <span class="hljs-number">1</span>
+    });
+  }
+
+  handleDecrease = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">this</span>.setState({
+      <span class="hljs-attr">number</span>: <span class="hljs-keyword">this</span>.state.number - <span class="hljs-number">1</span>
+    });
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>카운터<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>값: {this.state.number}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.handleIncrease}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.handleDecrease}</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Counter;
+</code></pre>
+<h3>state 정의</h3>
+<p>위에서부터 아래로 쭉 살펴봅시다. 우선, 컴포넌트의 state 를 정의할 때는 <a href="https://babeljs.io/docs/plugins/transform-class-properties/">class fields</a> 문법을 사용해서 정의합니다.</p>
+<p>이 코드는 만약에 class fields 를 사용하지 않는다면 다음과 같이 사용합니다.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = {
+      <span class="hljs-attr">number</span>: <span class="hljs-number">0</span>
+    }
+  }
+
+  ...
+
+ 
+}
+</code></pre>
+<p>우리가 class fields 를 사용하는건 편의를 위함입니다. 확실히 constructor 에 넣는것보다는 편해보이죠?</p>
+<p>위 코드의 constructor 에서 <code>super(props)</code> 를 호출 한 이유는, 우리가 컴포넌트를 만들게 되면서, Component 를 상속했으며, 우리가 이렇게 constructor 를 작성하게 되면 기존의 클래스 생성자를 덮어쓰게 됩니다. 그렇기에, 리액트 컴포넌트가 지니고있던 생성자를 super 를 통하여 미리 실행하고, 그 다음에 우리가 할 작업 (state 설정) 을 해주는 것 입니다.</p>
+<p>만약에 class fields 도 사용하고 constructor 도 사용하게 된다면, 어떤 부분이 더욱 늦게 설정될까요?</p>
+<p><img src="./MyName.js_files/L1P2Z0J.png" alt=""></p>
+<p>class fields 가 먼저 실행되고, 그 다음에 constructor 에서 설정된 것이 나옵니다.</p>
+<h3>메소드 작성</h3>
+<pre><code class="language-javascript hljs">  handleIncrease = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">this</span>.setState({
+      <span class="hljs-attr">number</span>: <span class="hljs-keyword">this</span>.state.number + <span class="hljs-number">1</span>
+    });
+  }
+
+  handleDecrease = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">this</span>.setState({
+      <span class="hljs-attr">number</span>: <span class="hljs-keyword">this</span>.state.number - <span class="hljs-number">1</span>
+    });
+  }
+</code></pre>
+<p>컴포넌트에 메소드를 작성해주었습니다. 컴포넌트에서 메소드는 다음과 같은 형식으로도 작성 할 수 있는데요,</p>
+<pre><code class="language-javascript hljs">  handleIncrease() {
+    <span class="hljs-keyword">this</span>.setState({
+      <span class="hljs-attr">number</span>: <span class="hljs-keyword">this</span>.state.number + <span class="hljs-number">1</span>
+    });
+  }
+
+  handleDecrease() {
+    <span class="hljs-keyword">this</span>.setState({
+      <span class="hljs-attr">number</span>: <span class="hljs-keyword">this</span>.state.number - <span class="hljs-number">1</span>
+    });
+  }
+</code></pre>
+<p>이렇게 하면, 나중에 버튼에서 클릭이벤트가 발생 했을 때, this 가 undefined 로 나타나서 제대로 처리되지 않게 됩니다. 이는 함수가 버튼의 클릭이벤트로 전달이 되는 과정에서 “this” 와의 연결이 끊겨버리기 때문인데요, 이를 고쳐주려면 constructor 에서</p>
+<pre><code class="language-javascript hljs">  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.handleIncrease = <span class="hljs-keyword">this</span>.handleIncrease.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.handleDecrease = <span class="hljs-keyword">this</span>.handleDecrease.bind(<span class="hljs-keyword">this</span>);
+  }
+</code></pre>
+<p>처럼 해주거나, 우리가 이전에 작성한 코드처럼 아예 화살표 함수 형태로 하면 this 가 풀리는 것에 대해서 걱정하실 필요 없습니다.</p>
+<h3>setState</h3>
+<p>자 이제 각 메소드에 들어있는 <code>this.setState</code> 에 대해서 알아봅시다. state 에 있는 값을 바꾸기 위해서는, this.setState 를 무조건 거쳐야합니다. 리액트에서는, 이 함수가 호출되면 컴포넌트가 리렌더링 되도록 설계되어있습니다.</p>
+<p>이 함수에 대해서 조금 더 자세히 알아봅시다.</p>
+<p>setState 는, 객체로 전달되는 값만 업데이트를 해줍니다.</p>
+<p>지금은 state 에 number 값밖에 없지만 만약에 다음과 같이 다른 값이 있다고 가정해봅시다.</p>
+<pre><code class="language-javascript hljs">  state = {
+    <span class="hljs-attr">number</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">foo</span>: <span class="hljs-string">'bar'</span>
+  }
+</code></pre>
+<p>그러면, this.setState({ number: 1 }); 을 하게 된다면, foo 는 그대로 남고, number 값만 업데이트 됩니다.</p>
+<p>setState 는 객체의 깊숙한곳 까지 확인하지 못합니다. 예를들어서, state 가 다음과 같이 설정되어있다고 가정한다면요,</p>
+<pre><code class="language-javascript hljs">  state = {
+    <span class="hljs-attr">number</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">foo</span>: {
+      <span class="hljs-attr">bar</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">foobar</span>: <span class="hljs-number">1</span>
+    }
+  }
+</code></pre>
+<p>아래와 같이 한다고 해서 foobar 값이 업데이트 되지 않습니다.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">this</span>.setState({
+  <span class="hljs-attr">foo</span>: {
+    <span class="hljs-attr">foobar</span>: <span class="hljs-number">2</span>
+  }
+})
+</code></pre>
+<p>이렇게 하게된다면 그냥 기존의 foo 객체가 바뀌어버립니다.</p>
+<pre><code class="language-javascript hljs">{
+  <span class="hljs-attr">number</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">foo</span>: {
+    <span class="hljs-attr">foobar</span>: <span class="hljs-number">2</span>
+  }
+}
+</code></pre>
+<p>그 대신에 위와 같은 상황에서는 이렇게 해주어야합니다:</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">this</span>.setState({
+  <span class="hljs-attr">number</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">foo</span>: {
+    ...this.state.foo,
+    <span class="hljs-attr">foobar</span>: <span class="hljs-number">2</span>
+  }
+});
+</code></pre>
+<p>… 은 자바스크립트의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_operator">전개연산자</a> 입니다. 기존의 객체안에 있는 내용을 해당 위치에다가 풀어준다는 의미죠. 그 다음에, 우리가 설정하고 싶은 값을 또 넣어주면 해당 값을 덮어쓰게 됩니다.</p>
+<p>이러한 작업이 꽤나 귀찮으므로, 나중에는 <a href="https://velopert.com/3486">immutable.js</a> 혹은 <a href="https://github.com/mweststrate/immer">immer.js</a> 를 사용하여 이 작업을 좀 더 간단하게 해볼 것입니다.</p>
+<h4>setState에 객체 대신 함수를 전달하기</h4>
+<p>setState 를 사용하여 값을 업데이트하게 될 때, 기존의 값을 참고하여 값을 업데이트를 하게 될 때, 조금 더 나은 문법으로 할 수 있습니다.</p>
+<p>기존에 작성했던 코드는 이랬죠?</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">this</span>.setState({
+  <span class="hljs-attr">number</span>: <span class="hljs-keyword">this</span>.state.number + <span class="hljs-number">1</span>
+});
+</code></pre>
+<p>큰 문제는 아니지만, 굳이 또 this.state 를 조회해야 하는데요, 이렇게 하면 조금 더 멋진 문법으로 작성 할 수 있습니다.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">this</span>.setState(
+  <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> ({
+    <span class="hljs-attr">number</span>: state.number
+  })
+);
+</code></pre>
+<p>setState 에 updater 함수를 만들어서 전달해 주었습니다. 여기서 조금 더 나아가면 이렇게 작성 할 수 있습니다.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">this</span>.setState(
+  <span class="hljs-function">(<span class="hljs-params">{ number }</span>) =&gt;</span> ({
+    <span class="hljs-attr">number</span>: number + <span class="hljs-number">1</span>
+  })
+);
+</code></pre>
+<p>보면 (state) 가 ({ number }) 가 됐죠? 이건 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">비구조화 할당</a> 이라는 문법입니다.</p>
+<p>이 문법은 이런식으로도 사용 할 수 있는데요,</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">const</span> { number } = <span class="hljs-keyword">this</span>.state;
+</code></pre>
+<p>결국 코드를 조금 덜 작성하고 싶다면 이렇게도 할 수 있답니다.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">const</span> { number } = <span class="hljs-keyword">this</span>.state;
+<span class="hljs-keyword">this</span>.setState({
+  <span class="hljs-attr">number</span>: number + <span class="hljs-number">1</span>
+})
+</code></pre>
+<p>어떤 코드가 더 맘에 드시나요? 아무거나 사용하시면 됩니다.</p>
+<p>그러면, 기존에 작성했던 함수를 각각 다른 방식으로 구현해보겠습니다.</p>
+<pre><code class="language-javascript hljs">  handleIncrease = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> { number } = <span class="hljs-keyword">this</span>.state;
+    <span class="hljs-keyword">this</span>.setState({
+      <span class="hljs-attr">number</span>: number + <span class="hljs-number">1</span>
+    });
+  }
+
+  handleDecrease = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">this</span>.setState(
+      <span class="hljs-function">(<span class="hljs-params">{ number }</span>) =&gt;</span> ({
+        <span class="hljs-attr">number</span>: number - <span class="hljs-number">1</span>
+      })
+    );
+  }
+</code></pre>
+<h3>이벤트 설정</h3>
+<p>render 함수에서 이벤트 설정을 한 부분을 확인해봅시다.</p>
+<pre><code class="language-javascript hljs">  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>카운터<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>값: {this.state.number}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.handleIncrease}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.handleDecrease}</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
+</code></pre>
+<p>버튼이 클릭되면 우리가 준비한 함수가 각각 호출되도록 설정해주었습니다. 기존에 자바스크립트로 비슷한 작업을 해보신분이라면 아래에 있는 코드가 익숙하시겠죠?</p>
+<pre><code class="language-html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"alert('hello');"</span>&gt;</span>Click Me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<p>html 에서는 onclick 속성에 클릭되면 실행 할 자바스크립트를 문자열 형태로 넣어줍니다. 반면 우리가 작성한 코드를 다시 봐보세요.</p>
+<pre><code class="language-javascript hljs">&lt;button onClick={<span class="hljs-keyword">this</span>.handleIncrease}&gt;+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+</code></pre>
+<p>여기서 정말로 <strong>주의</strong>해주셔야 하는데요, 리액트에서 이벤트 함수를 설정할때 html 과 다음과 같은 사항이 다릅니다.</p>
+<ul>
+<li>이벤트이름을 설정 할 때 camelCase 로 설정해주어야 합니다. onclick 은 onClick, onmousedown 은 onMouseDown, onchange 는 onChange 이런식으로 말이죠.</li>
+<li>이벤트에 전달해주는 값은 <strong>함수</strong> 여야 합니다. 만약에 <code>onClick={this.handleIncrease()}</code> 이런식으로 하게 된다면, 렌더링을 할 때 마다 해당 함수가 호출이됩니다. 그렇게 되면 정말 큰 일이 발생합니다. 렌더링 -&gt; 함수 호출 -&gt; setState -&gt; 렌더링 -&gt; 함수 호출 -&gt; 무한반복.. 이렇게 되버리는 것이죠!</li>
+</ul>
+<p>그러니까 꼭 주의하셔야 합니다. 렌더링 함수에서 이벤트를 설정 할 때 여러분이 만든 메소드를 호출하지 마세요!</p>
+<p>자~ 그러면 설명이 끝났으니 이 컴포넌트를 App 에서 불러와서 렌더링 해보세요.</p>
+<pre><code class="language-javascript hljs"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> Counter <span class="hljs-keyword">from</span> <span class="hljs-string">'./Counter'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Counter</span> /&gt;</span>
+    );
+  }
+}
+
+export default App;
+</span></code></pre>
+<p><img src="./MyName.js_files/BOHshpr.png" alt=""></p>
+<p>아래에 있는 버튼들을 눌러보면 숫자가 바뀔겁니다!</p>
+<h2>정리</h2>
+<p>리액트에서 props 를 전달하는 방법과, state 를 다루는 방법을 알아보았습니다. 지금은 아주 간단한 정보의 상태 조작만 했는데요, 앞으로 조금 더 복잡한 상태들을 관리하게 될거에요.</p>
+<p>다음 섹션에서는, 리액트에서 매우 유용한 역할을 하는 LifeCycle API 에 대해서 알아보겠습니다.</p>
+<ins class="adsbygoogle" style="display: block; height: 60px;" data-ad-client="ca-pub-5574866530496701" data-ad-slot="2155287076" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:502px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:502px;background-color:transparent;"><iframe width="502" height="60" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:502px;height:60px;" src="./MyName.js_files/saved_resource(3).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>			</div><!-- .entry-content -->
+
+	<footer class="entry-footer smallPart">
+		<span class="tags-links"><i class="fa fa-tags spaceRight"></i><a href="https://velopert.com/tag/react" rel="tag">react</a> / <a href="https://velopert.com/tag/react-anyone" rel="tag">react-anyone</a></span>	</footer><!-- .entry-footer -->
+	</div><!-- .content-annina -->
+</article><!-- #post-## -->
+
+				<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+			<div class="nav-previous"><a href="https://velopert.com/3626" rel="prev"><div class="meta-nav" title="누구든지 하는 리액트 3편: JSX" aria-hidden="true"><i class="fa fa-angle-left spaceRight"></i><span>Previous Post</span></div> <span class="screen-reader-text">Previous post:</span> </a></div><div class="nav-next"><a href="https://velopert.com/3631" rel="next"><div class="meta-nav" title="누구든지 하는 리액트 5편: LifeCycle API" aria-hidden="true"><span>Next Post</span><i class="fa fa-angle-right spaceLeft"></i></div> <span class="screen-reader-text">Next Post:</span> </a></div>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+			
+<div id="disqus_thread"><iframe id="dsq-app6509" name="dsq-app6509" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./MyName.js_files/saved_resource(4).html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 1254px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe><iframe id="indicator-north" name="indicator-north" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 527px !important; border: none !important; overflow: hidden !important; top: 0px !important; min-width: 527px !important; max-width: 527px !important; position: fixed !important; z-index: 2147483646 !important; height: 19px !important; min-height: 19px !important; max-height: 19px !important; display: none !important;" src="./MyName.js_files/saved_resource(5).html"></iframe><iframe id="indicator-south" name="indicator-south" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 527px !important; border: none !important; overflow: hidden !important; bottom: 0px !important; min-width: 527px !important; max-width: 527px !important; position: fixed !important; z-index: 2147483646 !important; height: 19px !important; min-height: 19px !important; max-height: 19px !important; display: none !important;" src="./MyName.js_files/saved_resource(6).html"></iframe></div>
+
+
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+<div id="secondary" class="widget-area" role="complementary">
+	<aside id="search-2" class="content-annina widget widget_search"><form role="search" method="get" class="search-form" action="https://velopert.com/">
+				<label>
+					<span class="screen-reader-text">검색:</span>
+					<input type="search" class="search-field" placeholder="검색 …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="검색">
+			</form></aside><aside id="adsense_box_widget-2" class="content-annina widget adsense_box_widgets"><script async="" src="./MyName.js_files/adsbygoogle.js"></script>
+<!-- Responsive -->
+<ins class="adsbygoogle" style="display: block; background: white; height: 600px;" data-ad-client="ca-pub-5574866530496701" data-ad-slot="2155287076" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent;"><iframe width="200" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:200px;height:600px;" src="./MyName.js_files/saved_resource(7).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside><aside id="flexipages-4" class="content-annina widget widget_pages widget_flexipages flexipages_widget"><div class="widget-title"><h3>강좌목록</h3></div>
+<ul>
+	<li class="page_item page-item-3083"><a href="https://velopert.com/vuejs-tutorials" title="[Vue.JS 2.0] 강좌 목록">[Vue.JS 2.0] 강좌 목록</a></li>
+	<li class="page_item page-item-1114"><a href="https://velopert.com/reactjs-tutorials" title="[React.JS] 강좌 목록">[React.JS] 강좌 목록</a></li>
+	<li class="page_item page-item-421"><a href="https://velopert.com/node-js-tutorials" title="[Node.JS] 강좌 목록">[Node.JS] 강좌 목록</a></li>
+	<li class="page_item page-item-719"><a href="https://velopert.com/mongodb-tutorial-list" title="[MongoDB] 강좌 목록">[MongoDB] 강좌 목록</a></li>
+	<li class="page_item page-item-3558"><a href="https://velopert.com/serverless-tutorial" title="[Serverless] 강좌 목록">[Serverless] 강좌 목록</a></li>
+</ul></aside>		<aside id="recent-posts-2" class="content-annina widget widget_recent_entries">		<div class="widget-title"><h3>최근 글</h3></div>		<ul>
+					<li>
+				<a href="https://velopert.com/3613">누구든지 하는 리액트: 초심자를 위한 리액트 핵심 강좌</a>
+						</li>
+					<li>
+				<a href="https://velopert.com/3606">리액트 16.3 에 소개된 새로워진 Context API 파헤치기</a>
+						</li>
+					<li>
+				<a href="https://velopert.com/3595">TypeScript with React + Redux/Immutable.js 빠르게 배우기</a>
+						</li>
+					<li>
+				<a href="https://velopert.com/3591">React + Redux 앱 테스트</a>
+						</li>
+					<li>
+				<a href="https://velopert.com/3587">Jest, Enzyme 을 통한 리액트 컴포넌트 유닛 테스팅</a>
+						</li>
+				</ul>
+		</aside>		<aside id="recent-comments-2" class="content-annina widget widget_recent_comments"><div class="widget-title"><h3>최근 댓글</h3></div><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">DaekyuLee</span> (<a href="https://velopert.com/3631#comment-1514">누구든지 하는 리액트 5편: LifeCycle API</a>)</li><li class="recentcomments"><span class="comment-author-link">DaekyuLee</span> (<a href="https://velopert.com/3636#comment-1513">누구든지 하는 리액트 7편: 배열 다루기 (1) 생성과 렌더링</a>)</li><li class="recentcomments"><span class="comment-author-link">이재우</span> (<a href="https://velopert.com/3549#comment-1511">Serverless 프레임워크로 서버리스 애플리케이션 생성 및 배포하기</a>)</li><li class="recentcomments"><span class="comment-author-link">jangji1</span> (<a href="https://velopert.com/3606#comment-1510">리액트 16.3 에 소개된 새로워진 Context API 파헤치기</a>)</li><li class="recentcomments"><span class="comment-author-link">Seongho Roh</span> (<a href="https://velopert.com/3613#comment-1509">누구든지 하는 리액트: 초심자를 위한 리액트 핵심 강좌</a>)</li></ul></aside><aside id="archives-2" class="content-annina widget widget_archive"><div class="widget-title"><h3>글 목록</h3></div>		<ul>
+			<li><a href="https://velopert.com/date/2018/04">2018년 4월</a></li>
+	<li><a href="https://velopert.com/date/2018/03">2018년 3월</a></li>
+	<li><a href="https://velopert.com/date/2018/02">2018년 2월</a></li>
+	<li><a href="https://velopert.com/date/2018/01">2018년 1월</a></li>
+	<li><a href="https://velopert.com/date/2017/12">2017년 12월</a></li>
+	<li><a href="https://velopert.com/date/2017/07">2017년 7월</a></li>
+	<li><a href="https://velopert.com/date/2017/06">2017년 6월</a></li>
+	<li><a href="https://velopert.com/date/2017/05">2017년 5월</a></li>
+	<li><a href="https://velopert.com/date/2017/04">2017년 4월</a></li>
+	<li><a href="https://velopert.com/date/2017/03">2017년 3월</a></li>
+	<li><a href="https://velopert.com/date/2017/01">2017년 1월</a></li>
+	<li><a href="https://velopert.com/date/2016/12">2016년 12월</a></li>
+	<li><a href="https://velopert.com/date/2016/11">2016년 11월</a></li>
+	<li><a href="https://velopert.com/date/2016/10">2016년 10월</a></li>
+	<li><a href="https://velopert.com/date/2016/09">2016년 9월</a></li>
+	<li><a href="https://velopert.com/date/2016/08">2016년 8월</a></li>
+	<li><a href="https://velopert.com/date/2016/07">2016년 7월</a></li>
+	<li><a href="https://velopert.com/date/2016/06">2016년 6월</a></li>
+	<li><a href="https://velopert.com/date/2016/05">2016년 5월</a></li>
+	<li><a href="https://velopert.com/date/2016/04">2016년 4월</a></li>
+	<li><a href="https://velopert.com/date/2016/03">2016년 3월</a></li>
+	<li><a href="https://velopert.com/date/2016/02">2016년 2월</a></li>
+	<li><a href="https://velopert.com/date/2016/01">2016년 1월</a></li>
+		</ul>
+		</aside><aside id="categories-2" class="content-annina widget widget_categories"><div class="widget-title"><h3>카테고리</h3></div><label class="screen-reader-text" for="cat">카테고리</label><select name="cat" id="cat" class="postform">
+	<option value="-1">카테고리 선택</option>
+	<option class="level-0" value="4">dev.log&nbsp;&nbsp;(128)</option>
+	<option class="level-1" value="12">&nbsp;&nbsp;&nbsp;algorithm.log&nbsp;&nbsp;(13)</option>
+	<option class="level-1" value="129">&nbsp;&nbsp;&nbsp;journal.log&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="6">&nbsp;&nbsp;&nbsp;link.repository&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="24">&nbsp;&nbsp;&nbsp;tech.log&nbsp;&nbsp;(108)</option>
+	<option class="level-2" value="149">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GraphQL&nbsp;&nbsp;(1)</option>
+	<option class="level-2" value="157">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JWT&nbsp;&nbsp;(3)</option>
+	<option class="level-2" value="56">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mongodb&nbsp;&nbsp;(7)</option>
+	<option class="level-2" value="213">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next.js&nbsp;&nbsp;(1)</option>
+	<option class="level-2" value="25">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node.js&nbsp;&nbsp;(48)</option>
+	<option class="level-2" value="82">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;React.js&nbsp;&nbsp;(65)</option>
+	<option class="level-2" value="130">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass&nbsp;&nbsp;(1)</option>
+	<option class="level-2" value="242">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;serverless&nbsp;&nbsp;(4)</option>
+	<option class="level-2" value="179">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vue.js&nbsp;&nbsp;(6)</option>
+	<option class="level-1" value="76">&nbsp;&nbsp;&nbsp;tips.log&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="71">idea.log&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="5">release.log&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="46">review.log&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="3">thoughts.log&nbsp;&nbsp;(14)</option>
+</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			location.href = "https://velopert.com/?cat=" + dropdown.options[ dropdown.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+</aside><aside id="meta-2" class="content-annina widget widget_meta"><div class="widget-title"><h3>그 밖의 기능</h3></div>			<ul>
+						<li><a href="https://velopert.com/wp-login.php">로그인</a></li>
+			<li><a href="https://velopert.com/feed">글 <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://velopert.com/comments/feed">댓글 <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="이 블로그는 가장 앞선 개인 발행 도구인 워드프레스로 운영됩니다.">WordPress.org</a></li>			</ul>
+			</aside></div><!-- #secondary -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info content-annina-title annDouble smallPart">
+			<div class="text-copy">
+			<a href="http://wordpress.org/">Proudly powered by WordPress</a>
+			<span class="sep"> | </span>
+			Theme: Annina Free by <a target="_blank" href="http://crestaproject.com/downloads/annina/" rel="designer" title="CrestaProject">CrestaProject</a>.			</div>
+			<div id="toTop"><i class="fa fa-angle-up fa-lg"></i></div>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+</div><!-- #content -->
+<div style="display:none;" id="photos-box-tags" class="photos-box-tags"><ul><li><a href="http://photoboxone.com//category/plugins/" target="_blank" title="Plugins Wordpress">Plugins Wordpress</a></li><li><a href="http://photoboxone.com//category/themes/" target="_blank" title="Themes Wordpress">Themes Wordpress</a></li><li><a href="http://photoboxone.com//category/documents/" target="_blank" title="Documents Wordpress">Documents Wordpress</a></li></ul></div><link rel="stylesheet" id="hljstheme-css" href="./MyName.js_files/atom-one-dark.css" type="text/css" media="all">
+<script type="text/javascript" src="./MyName.js_files/jquery.malihu.PageScroll2id.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var mPS2id_params = {"instances":{"mPS2id_instance_0":{"selector":{"value":"a[rel='m_PageScroll2id']","values":null,"id":"page_scroll_to_id_0_selector","field_type":"text","label":"Selector(s)","checkbox_label":null,"radio_labels":null,"field_info":null,"description":"The link(s) that will scroll the page when clicked. Defaults to all links with <code>m_PageScroll2id<\/code> rel attribute value <br \/><small>In addition to selectors above, the plugin is enabled by default on links (or links contained within elements) with class <code>ps2id<\/code><\/small>","wrapper":null},"autoSelectorMenuLinks":{"value":"false","values":null,"id":"page_scroll_to_id_0_autoSelectorMenuLinks","field_type":"checkbox","label":"","checkbox_label":"Enable on WordPress Menu links","radio_labels":null,"field_info":null,"description":"Automatically enable the plugin on custom links (containing a hash in their URL) created in WordPress Menus <br \/><small>Requires WordPress version 3.6 or higher<\/small>","wrapper":"fieldset"},"scrollSpeed":{"value":1300,"values":null,"id":"page_scroll_to_id_0_scrollSpeed","field_type":"text-integer","label":"Scroll animation speed","checkbox_label":null,"radio_labels":null,"field_info":"milliseconds","description":"Scroll animation speed in milliseconds (1000 milliseconds equals 1 second)","wrapper":null},"autoScrollSpeed":{"value":"true","values":null,"id":"page_scroll_to_id_0_autoScrollSpeed","field_type":"checkbox","label":"","checkbox_label":"Auto-adjust animation speed","radio_labels":null,"field_info":null,"description":"Auto-adjust animation speed according to target element position and window scroll","wrapper":"fieldset"},"scrollEasing":{"value":"easeInOutExpo","values":"linear,swing,easeInQuad,easeOutQuad,easeInOutQuad,easeInCubic,easeOutCubic,easeInOutCubic,easeInQuart,easeOutQuart,easeInOutQuart,easeInQuint,easeOutQuint,easeInOutQuint,easeInExpo,easeOutExpo,easeInOutExpo,easeInSine,easeOutSine,easeInOutSine,easeInCirc,easeOutCirc,easeInOutCirc,easeInElastic,easeOutElastic,easeInOutElastic,easeInBack,easeOutBack,easeInOutBack,easeInBounce,easeOutBounce,easeInOutBounce","id":"page_scroll_to_id_0_scrollEasing","field_type":"select","label":"Scroll animation easing","checkbox_label":null,"radio_labels":null,"field_info":null,"description":"Animation easing when page is idle","wrapper":null},"scrollingEasing":{"value":"easeInOutCirc","values":"linear,swing,easeInQuad,easeOutQuad,easeInOutQuad,easeInCubic,easeOutCubic,easeInOutCubic,easeInQuart,easeOutQuart,easeInOutQuart,easeInQuint,easeOutQuint,easeInOutQuint,easeInExpo,easeOutExpo,easeInOutExpo,easeInSine,easeOutSine,easeInOutSine,easeInCirc,easeOutCirc,easeInOutCirc,easeInElastic,easeOutElastic,easeInOutElastic,easeInBack,easeOutBack,easeInOutBack,easeInBounce,easeOutBounce,easeInOutBounce","id":"page_scroll_to_id_0_scrollingEasing","field_type":"select","label":"","checkbox_label":null,"radio_labels":null,"field_info":null,"description":"Animation easing while page is animating","wrapper":null},"pageEndSmoothScroll":{"value":"true","values":null,"id":"page_scroll_to_id_0_pageEndSmoothScroll","field_type":"checkbox","label":"Scroll-to position","checkbox_label":"Auto-adjust","radio_labels":null,"field_info":null,"description":"Auto-adjust the scroll-to position so it does not exceed document length","wrapper":"fieldset"},"layout":{"value":"vertical","values":"vertical,horizontal,auto","id":"page_scroll_to_id_0_layout","field_type":"radio","label":"Page layout","checkbox_label":null,"radio_labels":"vertical|horizontal|auto","field_info":null,"description":"Restrict page scrolling to top-bottom (vertical) or left-right (horizontal) accordingly. For both vertical and horizontal scrolling select <code>auto<\/code>","wrapper":"fieldset"},"offset":{"value":0,"values":null,"id":"page_scroll_to_id_0_offset","field_type":"text","label":"Offset","checkbox_label":null,"radio_labels":null,"field_info":"pixels","description":"Offset scroll-to position by x amount of pixels (positive or negative) or by selector (e.g. <code>#navigation-menu<\/code>)","wrapper":null},"highlightSelector":{"value":"","values":null,"id":"page_scroll_to_id_0_highlightSelector","field_type":"text","label":"Highlight selector(s)","checkbox_label":null,"radio_labels":null,"field_info":null,"description":"The link(s) that are highlighted. Leave empty to highlight all or enter your specific selector(s)","wrapper":null},"clickedClass":{"value":"mPS2id-clicked","values":null,"id":"page_scroll_to_id_0_clickedClass","field_type":"text","label":"Classes","checkbox_label":null,"radio_labels":null,"field_info":"class name","description":"Class of the clicked link","wrapper":null},"targetClass":{"value":"mPS2id-target","values":null,"id":"page_scroll_to_id_0_targetClass","field_type":"text","label":"","checkbox_label":null,"radio_labels":null,"field_info":"class name","description":"Class of the (current) target element. First (current) target element class suffix: <code>-first<\/code> (e.g. <code>.mPS2id-target-first<\/code>). Last (current) target element class suffix: <code>-last<\/code> (e.g. <code>.mPS2id-target-last<\/code>)","wrapper":null},"highlightClass":{"value":"mPS2id-highlight","values":null,"id":"page_scroll_to_id_0_highlightClass","field_type":"text","label":"","checkbox_label":null,"radio_labels":null,"field_info":"class name","description":"Class of the (current) highlighted element. First (current) highlighted element class suffix: <code>-first<\/code> (e.g. <code>.mPS2id-highlight-first<\/code>). Last (current) highlighted element class suffix: <code>-last<\/code> (e.g. <code>.mPS2id-highlight-last<\/code>)","wrapper":null},"forceSingleHighlight":{"value":"false","values":null,"id":"page_scroll_to_id_0_forceSingleHighlight","field_type":"checkbox","label":"","checkbox_label":"Force single highlight","radio_labels":null,"field_info":null,"description":"Allow only one highlighted element at a time","wrapper":"fieldset"},"keepHighlightUntilNext":{"value":"false","values":null,"id":"page_scroll_to_id_0_keepHighlightUntilNext","field_type":"checkbox","label":"","checkbox_label":"Keep highlight until next","radio_labels":null,"field_info":null,"description":"Keep the current element highlighted until the next one comes into view","wrapper":"fieldset"},"highlightByNextTarget":{"value":"false","values":null,"id":"page_scroll_to_id_0_highlightByNextTarget","field_type":"checkbox","label":"","checkbox_label":"Highlight by next target","radio_labels":null,"field_info":null,"description":"Set targets length according to their next adjacent target position (useful when target elements have zero dimensions)","wrapper":"fieldset"},"scrollToHash":{"value":"false","values":null,"id":"page_scroll_to_id_0_scrollToHash","field_type":"checkbox","label":"Scroll to location hash","checkbox_label":"Enable","radio_labels":null,"field_info":null,"description":"Scroll to target id (e.g. <code>&lt;div id=\"id\" \/&gt;<\/code>) based on location hash (e.g. <code>mysite.com\/mypage#id<\/code>) on page load","wrapper":"fieldset"},"scrollToHashForAll":{"value":"false","values":null,"id":"page_scroll_to_id_0_scrollToHashForAll","field_type":"checkbox","label":"","checkbox_label":"Enable for all targets (even for elements that are not handled by the plugin)","radio_labels":null,"field_info":null,"description":null,"wrapper":"fieldset"},"scrollToHashDelay":{"value":0,"values":null,"id":"page_scroll_to_id_0_scrollToHashDelay","field_type":"text-integer","label":"","checkbox_label":null,"radio_labels":null,"field_info":"Delay (milliseconds)","description":"Scroll to location hash animation delay in milliseconds (1000 milliseconds equals 1 second)","wrapper":null},"disablePluginBelow":{"value":0,"values":null,"id":"page_scroll_to_id_0_disablePluginBelow","field_type":"text","label":"Disable plugin below","checkbox_label":null,"radio_labels":null,"field_info":"screen-size","description":"Set the width,height screen-size (in pixels), below which the plugin will be disabled (e.g. <code>1024<\/code>, <code>1024,600<\/code>)","wrapper":null},"adminDisplayWidgetsId":{"value":"true","values":null,"id":"page_scroll_to_id_0_adminDisplayWidgetsId","field_type":"checkbox","label":"Administration","checkbox_label":"Display widgets id attribute","radio_labels":null,"field_info":null,"description":"Show the id attribute of each widget in Appearance &rarr; Widgets","wrapper":"fieldset"},"adminTinyMCEbuttons":{"value":"true","values":null,"id":"page_scroll_to_id_0_adminTinyMCEbuttons","field_type":"checkbox","label":"","checkbox_label":"Enable insert link\/target buttons in post visual editor","radio_labels":null,"field_info":null,"description":"<small>Requires WordPress version 3.9 or higher<\/small>","wrapper":"fieldset"}}},"total_instances":"1","shortcode_class":"_ps2id"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./MyName.js_files/jquery.malihu.PageScroll2id-init.js"></script>
+<script type="text/javascript" src="./MyName.js_files/shc_protect_message.js"></script>
+<script type="text/javascript" src="./MyName.js_files/imagesloaded.min.js"></script>
+<script type="text/javascript" src="./MyName.js_files/masonry.min.js"></script>
+<script type="text/javascript" src="./MyName.js_files/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="./MyName.js_files/jquery.annina.js"></script>
+<script type="text/javascript" src="./MyName.js_files/navigation.js"></script>
+<script type="text/javascript" src="./MyName.js_files/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript" src="./MyName.js_files/SmoothScroll.min.js"></script>
+<script type="text/javascript" src="./MyName.js_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./MyName.js_files/wp-embed.min.js"></script>
+<script type="text/javascript" src="./MyName.js_files/highlight.common.pack.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"platform":"wordpress@4.7.10","language":""},"disqusIdentifier":"3629 https:\/\/velopert.com\/?p=3629","disqusShortname":"velopertlog","disqusTitle":"\ub204\uad6c\ub4e0\uc9c0 \ud558\ub294 \ub9ac\uc561\ud2b8 4\ud3b8: props \uc640 state","disqusUrl":"https:\/\/velopert.com\/3629","options":{"manualSync":false},"postId":"3629"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./MyName.js_files/disqus.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"velopertlog"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./MyName.js_files/count(1).js"></script>
+    <style>pre.hljs {padding: 5px;}
+pre.hljs code {}</style>
+    <script type="text/javascript">
+    (function($, window) {
+        var init_fn_flag = false;
+        var init_fn = (function() {
+            if (init_fn_flag)
+                return;
+            init_fn_flag = true;
+             hljs.configure({"tabReplace":"    "});
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+        $(document).ready(init_fn);
+        $(window).on("load", init_fn);
+    })(jQuery, window);
+    </script>
+
+
+
+<ins class="adsbygoogle" data-adsbygoogle-status="done" style="display: none;"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:NaNpx;margin:0;padding:0;position:relative;visibility:visible;width:NaNpx;background-color:transparent;"><ins id="aswift_3_anchor" style="display:block;border:none;height:NaNpx;margin:0;padding:0;position:relative;visibility:visible;width:NaNpx;background-color:transparent;"><iframe frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;width:NaNpx;height:NaNpx;" src="./MyName.js_files/saved_resource(8).html"></iframe></ins></ins></ins><iframe style="display: none;" src="./MyName.js_files/saved_resource(9).html"></iframe></body></html>
