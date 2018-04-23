@@ -21,8 +21,14 @@ class App extends Component {
   handleCreate = (data) => {
     const {information} = this.state;
     this.setState({
-      information: information.concat({id: this.id++, ...data})      
-    });
+      information: information.concat({id:this.id++, ...data})
+    })
+  }
+  handleRemove = (id) => {
+    const {information} = this.state;
+    this.setState({
+      information: information.filter(dict => dict.id !== id)
+    })
   }
   handleRemove = (id) => {
     const {information} = this.state;
