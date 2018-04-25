@@ -8,11 +8,45 @@ class PhoneInfo extends Component {
       id: 0
       }
   }
+  state = {
+    editing: false,
+    name: '',
+    phone: ''
+  }
   handleRemove = () => {
     const {info, onRemove} = this.props;
     onRemove(info.id);
   }
-
+  // handleUpdate = () => {
+  //   const {info, onUpdate} = this.props;
+  //   onUpdate(info.id, info)
+  // }
+  handleToggleEdit = () => {
+    const {editing} = this.state;
+    this.setState({editing: !editing})
+  }
+  handleChange = (e) => {
+    console.log(e)
+    const {name, value} = e.target; // name, value 는 특별한 값
+    this.setState({
+      [name]: value
+    })
+  }
+  componentDidUpdate(prevProps, prevState) {
+    const {info, onUpdate} = this.props;
+    if(!prevState.editing && this.state.editing) {
+      this.setState({
+        name: info.name,
+        phone: info.phone
+      })
+    }
+    if(prevState.editing && !this.state.editing) {
+      onUpdate(info.id, {
+        name: this.state.name,
+        phone: this.state.phone
+      });
+    }
+  }
   render() {
     const style = {
     border: '1px solid black',
@@ -20,14 +54,38 @@ class PhoneInfo extends Component {
     margin: '8px'
     };
 
-    const {
-      name, phone
-    } = this.props.info;
+    const {editing} = this.state;
 
+    if (editing) {
+      return (
+        <div style={style}>
+          <div>
+            <input
+             value={this.state.name}
+             name="name"
+             placeholder="이름"
+             onChange={this.handleChange}
+            />
+          </div>
+          <div>
+            <input
+              value={this.state.phone}
+              name="phone"
+              placeholder="전화번호"
+              onChange={this.handleChange} // 왜 있는지 모르겠다.
+            />
+            <button onClick={this.handleToggleEdit}>적용</button>
+            <button onClick={this.handleRemove}>삭제</button>
+          </div>
+        </div>
+      )
+    }
+    const { name, phone } = this.props.info;
     return (
       <div style={style}>
         <div><b>{name}</b></div>
         <div>{phone}</div>
+        <button onClick={this.handleToggleEdit}>수정</button>
         <button onClick={this.handleRemove}>삭제</button>
       </div>
         )
