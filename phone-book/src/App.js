@@ -16,7 +16,8 @@ class App extends Component {
         name: '네이버',
         phone: 'naver.com'
       }
-    ]
+    ],
+    keyword: ''
   }
   handleCreate = (data) => {
     const {information} = this.state;
@@ -38,18 +39,30 @@ class App extends Component {
           ? {...info, ...data}
           : info
       )
-    }, console.log(this.state)) // 이렇게 하면 콜백이 아닌가? 흠...
-    
+    }, console.log(this.state)) // 이렇게 하면 콜백이 아닌가? 흠... 
+  }
+  handleChange = (e) => {
+    this.setState({
+      keyword: e.target.value
+    });
   }
   render() {
-    const {information} = this.state;
+    const {information, keyword} = this.state;
+    const filteredList = information.filter(
+      info => info.name.indexOf(keyword) !== -1
+    )
     return (
       <div>
         <PhoneForm
           onCreate={this.handleCreate}
         />
+        <input
+          placeholder="검색할 이름을 입력하세요"
+          onChange={this.handleChange}
+          value={keyword}
+        />
         <PhoneInfoList 
-          data={information}
+          data={filteredList}
           onRemove={this.handleRemove}
           onUpdate={this.handleUpdate}
           />
